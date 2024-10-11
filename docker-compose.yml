@@ -1,0 +1,47 @@
+services:
+  # Development Web Server Service
+  dev_php_web:
+    container_name: dev_php_web   # Renamed to indicate this is a PHP-based web server for development
+    hostname: dev_php_web         # Updated to match the container name for easier identification in the network
+    image: ewalsh200/basephp:7.2.28 # Using Edmund's Docker image for PHP 7.2.28
+    platform: linux/amd64         # Ensuring compatibility with the specified platform
+    ports:
+      - "1235:80"                 # Exposing port 80 of the container as port 1235 on the host
+    volumes:
+      - ./share:/share            # Mounting the local 'share' directory for file sharing between host and container
+    env_file:
+      - .env                      # Loading environment variables from the '.env' file
+
+    networks:
+      dev_net:
+        ipv4_address: 172.12.0.2  
+    restart: unless-stopped       
+
+  # Ofelia Job Runner Service
+  ofelia_job_runner:
+    container_name: ofelia_job_runner #
+    image: mcuadros/ofelia:latest     # Using the latest Ofelia image to handle cron jobs in a Docker-friendly way
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro  # Mounting Docker socket to control other containers (Read-Only)
+      - ./ofelia/config/config.ini:/etc/ofelia/config.ini # Mounting Ofelia configuration for job definitions 
+    ports:
+      - "8509:8012"                 # Exposing port 8012 of the container as 8509 on the host for Ofelia's web UI
+    environment:
+      - TZ=UTC                      # Setting timezone to UTC for consistent job scheduling
+      - DOCKER_HOST=unix:///var/run/docker.sock # Ensuring Ofelia communicates with Docker properly
+    command: daemon --config=/etc/ofelia/config.ini # Starting Ofelia as a daemon with the specified configuration
+    depends_on:
+      - dev_php_web                 # Ensuring the dev_php_web service is started before this one
+    networks:
+      dev_net:
+        ipv4_address: 172.12.0.4    
+    restart: unless-stopped         
+
+# Network Configuration
+networks:
+  dev_net:
+    driver: bridge                 
+    ipam:
+      driver: default               
+      config:
+        - subnet: 172.12.0.0/16    
