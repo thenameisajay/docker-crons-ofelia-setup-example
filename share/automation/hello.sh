@@ -1,7 +1,15 @@
 #!/bin/bash
 
 
-#TODO : Watch the pic from your phone and  make changes accordingly
+# Author : Ajay Mahadeven
+# Date Created : 12/10/2024
+# Date Modified : 12/10/2024
+
+# Description 
+# This script prints "Hello, World!" 10 times to the log file
+
+# Usage
+# ./hello.sh
 
 HOME=/share/
 LOG_FILE=$HOME/log/hello.log
