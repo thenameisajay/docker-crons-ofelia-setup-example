@@ -8,3 +8,4 @@ node_modules/
 # Cron job Related Files
 
 /share/log/*.log
+/share/.cache/
