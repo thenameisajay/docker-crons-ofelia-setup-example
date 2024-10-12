@@ -100,12 +100,12 @@ Here's a visual representation of the setup:
 ### Development Web Server
 
 ![Development Web Server](https://github.com/thenameisajay/docker-crons-ofelia-setup-example/blob/main/screenshots/ofelia-logs.png)
-This screenshot shows the containers running and ofelia container logs.
+This screenshot shows the containers running and ofelia container logs which registers the cron job.
 
 ### Ofelia Job Runner
 
 ![Ofelia Job Runner](https://github.com/thenameisajay/docker-crons-ofelia-setup-example/blob/main/screenshots/ofelia-logs-1.png)
-This screenshot displays the Ofelia job runner service in action, registering and managing cron jobs within Docker.
+This screenshot displays the Ofelia job runner service in action, starting and managing cron jobs within Docker.
 
 ### Cron Logs
 
