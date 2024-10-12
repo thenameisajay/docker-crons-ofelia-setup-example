@@ -1,6 +1,6 @@
 # Docker Crons Ofelia Setup Example
 
-This repository provides an example setup for using Docker with Ofelia to manage cron jobs. The setup includes a development web server and an Ofelia job runner service.
+This repository provides an example setup for using Docker with Ofelia to manage cron jobs. The setup includes a development web server and an Ofelia job runner service. This approach is more flexible and maintainable compared to traditional crontab, as it leverages containerization and provides better isolation, easier deployments, and integrated logging.
 
 ## Repository Structure
 
