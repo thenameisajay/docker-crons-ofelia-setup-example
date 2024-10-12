@@ -67,7 +67,7 @@ This repository provides an example setup for using Docker with Ofelia to manage
 
 ### Setting Up the Cron Job (Ofelia)
 
-Follow these steps to configure the Azure Blob Uploader as a cron job:
+Follow these steps to configure any .sh script as a cron job:
 
 1. **Edit the Ofelia Configuration File**: Access the configuration file for editing:
    ```bash
@@ -75,9 +75,9 @@ Follow these steps to configure the Azure Blob Uploader as a cron job:
    nano config.ini
    ```
 
-2. **Add the Cron Job**: Insert the following line into the configuration file to schedule the Azure Blob Uploader script to run every hour:
+2. **Add the Cron Job**: Insert the following line into the configuration file to schedule the hello script to run every minute:
    ```ini
-   [job-exec "azure-uploader"]
+   [job-exec "hello-job"]
    schedule = "@every 1m"   # Runs every one minute
    container = "dev_os"
    command = "/bin/bash /share/automation/hello.sh"   # Place any cron job under /share/automation/*.sh and change the command & config options accordingly
