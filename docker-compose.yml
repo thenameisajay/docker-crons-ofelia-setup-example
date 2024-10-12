@@ -1,8 +1,8 @@
 services:
   # Development Web Server Service
   dev_php_web:
-    container_name: dev_php_web   # Renamed to indicate this is a PHP-based web server for development
-    hostname: dev_php_web         # Updated to match the container name for easier identification in the network
+    container_name: dev_php_web  
+    hostname: dev_php_web         
     image: ewalsh200/basephp:7.2.28 # Using Edmund's Docker image for PHP 7.2.28
     platform: linux/amd64         # Ensuring compatibility with the specified platform
     ports:

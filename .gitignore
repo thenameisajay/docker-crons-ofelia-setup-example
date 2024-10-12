@@ -4,3 +4,7 @@
 node_modules/
 .env
 
+
+# Cron job Related Files
+
+/share/log/*.log
